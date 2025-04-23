@@ -17,8 +17,8 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 import numpy as np
-import random
 import bittensor as bt
+import secrets
 
 
 async def ping_uids(dendrite, metagraph, uids, timeout=3):
@@ -92,7 +92,7 @@ async def get_query_api_nodes(dendrite, metagraph, n=0.1, timeout=3):
         f"Available API node UIDs for subnet {metagraph.netuid}: {query_uids}"
     )
     if len(query_uids) > 3:
-        query_uids = random.sample(query_uids, 3)
+        query_uids = secrets.SystemRandom().sample(query_uids, 3)
     return query_uids
 
 
